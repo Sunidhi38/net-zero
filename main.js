@@ -1,3 +1,6 @@
+import Dashboard from './dashboard.js';
+import AuthHandler from './auth-handler.js';
+
 // Chart configurations
 const chartConfigs = {
     temperatureChart: {
@@ -36,6 +39,9 @@ const chartConfigs = {
 
 // Initialize charts
 document.addEventListener('DOMContentLoaded', () => {
+    new AuthHandler();
+    new Dashboard();
+
     // Initialize temperature chart
     const tempCtx = document.getElementById('temperatureChart');
     if (tempCtx) {

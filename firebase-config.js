@@ -1,6 +1,7 @@
 // Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import { getDatabase, ref, onValue, set, get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
 
 // Your Firebase configuration
@@ -17,10 +18,12 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const database = getDatabase(app);
 const analytics = getAnalytics(app);
+const googleProvider = new GoogleAuthProvider();
 
-export { database, ref, onValue };
+export { auth, database, ref, onValue, set, get, signInWithEmailAndPassword, signInWithPopup, googleProvider, onAuthStateChanged, signOut };
 
 // Add error handling
 database.ref('.info/connected').on('value', (snap) => {
